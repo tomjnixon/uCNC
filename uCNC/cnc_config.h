@@ -456,12 +456,12 @@ extern "C"
  *  - a hardware or software reset
  *  - a homing command
  **/
-// #define ENABLE_G39_H_MAPPING
+#define ENABLE_G39_H_MAPPING
 #ifdef ENABLE_G39_H_MAPPING
 // set the grid size factor
 // this sets the size of the Hmap -> H_MAPING_GRID_FACTOR ^ 2
 // the minimum value is 2 (4 points) and the maximum is 6 (36 points)
-#define H_MAPING_GRID_FACTOR 3
+#define H_MAPING_GRID_FACTOR 4
 #endif
 
 	/**
@@ -568,7 +568,7 @@ extern "C"
  * Uncomment to invert Emergency stop button
  * */
 #ifndef INVERT_EMERGENCY_STOP
-// #define INVERT_EMERGENCY_STOP
+#define INVERT_EMERGENCY_STOP
 #endif
 
 	/**

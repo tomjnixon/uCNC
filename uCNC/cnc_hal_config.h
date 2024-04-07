@@ -47,6 +47,9 @@ extern "C"
 // #define LIMIT_B_DISABLE
 // #define LIMIT_C_DISABLE
 
+// #define DISABLE_Y_HOMING
+// #define DISABLE_Z_HOMING
+
 /**
  * Pins weak pullup resistors
  * */
@@ -123,7 +126,7 @@ extern "C"
  * NOTE: If Laser PPI is enabled one of the stepper drivers position will be used by the laser controller
  * Usually that is STEPPER<AXIS_COUNT> so if AXIS_COUNT=3, STEPPER3 will be used by laser PPI
  */
-// #define ENABLE_MULTI_STEPPER_AXIS
+#define ENABLE_MULTI_STEPPER_AXIS
 #ifdef ENABLE_MULTI_STEPPER_AXIS
 
 	/**
@@ -152,7 +155,7 @@ extern "C"
 	//  #define LINACT0_IO_MASK (STEP0_IO_MASK | STEP5_IO_MASK)
 
 	// defines a second multi stepper linear actuator LINACT1
-	//  #define LINACT1_IO_MASK (STEP1_IO_MASK | STEP6_IO_MASK)
+	#define LINACT1_IO_MASK (STEP1_IO_MASK | STEP3_IO_MASK)
 
 	// defines a second multi stepper linear actuator LINACT2
 	//  #define LINACT2_IO_MASK (STEP2_IO_MASK | STEP7_IO_MASK)
@@ -285,7 +288,11 @@ extern "C"
 // assign the tools from 1 to 16
 #if (TOOL_COUNT >= 1)
 // to allow build on virtual emulator
-#define TOOL1 spindle_pwm
+#define TOOL1 spindle_besc
+
+#define SPINDLE_BESC_LOW 65
+#define SPINDLE_BESC_HIGH 200
+
 #endif
 #if (TOOL_COUNT >= 2)
 #define TOOL2 spindle_pwm
