@@ -99,6 +99,22 @@ static int16_t range_speed(int16_t value, uint8_t conv)
 	return value;
 }
 
+static void ramp_to_speed(uint8_t target)
+{
+	uint8_t current = io_get_pwm(SPINDLE_BESC_SERVO);
+	while (current != target)
+	{
+		if (current < target)
+			current++;
+		else
+			current--;
+
+		io_set_pwm(SPINDLE_BESC_SERVO, current);
+
+		cnc_dwell_ms(10);
+	}
+}
+
 static void set_speed(int16_t value)
 {
 
@@ -106,12 +122,13 @@ static void set_speed(int16_t value)
 	{
 #if ASSERT_PIN(SPINDLE_BESC_SERVO)
 		io_set_pwm(SPINDLE_BESC_SERVO, SPINDLE_BESC_LOW);
+		ramp_to_speed(SPINDLE_BESC_LOW);
 #endif
 	}
 	else
 	{
 #if ASSERT_PIN(SPINDLE_BESC_SERVO)
-		io_set_pwm(SPINDLE_BESC_SERVO, (uint8_t)value);
+		ramp_to_speed((uint8_t)value);
 #endif
 	}
 }
