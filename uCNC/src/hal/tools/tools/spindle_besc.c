@@ -111,7 +111,7 @@ static void ramp_to_speed(uint8_t target)
 
 		io_set_pwm(SPINDLE_BESC_SERVO, current);
 
-		cnc_dwell_ms(10);
+		cnc_dwell_ms(20);
 	}
 }
 
