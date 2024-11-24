@@ -132,6 +132,31 @@ extern "C"
 	 * define different settings for each axis.
 	 */
 
+#define DEFAULT_STATUS_MASK 3
+#define DEFAULT_STEP_PER_MM_PER_AXIS {200, 200, 3200}
+#define DEFAULT_MAX_FEED_PER_AXIS {500, 500, 200}
+#define DEFAULT_MAX_DIST_PER_AXIS {106, 104, 45}
+
+#define DEFAULT_DIR_INV_MASK 10
+
+#define DEFAULT_LIMIT_INV_MASK 7
+#define DEFAULT_PROBE_INV_MASK 1
+
+#define DEFAULT_SOFT_LIMITS_ENABLED 1
+#define DEFAULT_HARD_LIMITS_ENABLED 1
+
+#define DEFAULT_HOMING_ENABLED 1
+#define DEFAULT_HOMING_DIR_INV_MASK 6
+
+#define DEFAULT_HOMING_OFFSET 0.5
+
+#define DEFAULT_SPINDLE_MAX_RPM 500
+
+#define DEFAULT_ACCEL 30
+
+#define DEFAULT_HOMING_FAST 150
+#define DEFAULT_HOMING_SLOW 20
+
 	// #define DEFAULT_DIR_INV_MASK 0
 	// #define DEFAULT_LIMIT_INV_MASK 0
 	// #define DEFAULT_SOFT_LIMITS_ENABLED 0
@@ -400,7 +425,7 @@ extern "C"
  * This change makes the code size a bit bigger but might make your
  * homing cycle yield more accurate results.
  * */
-// #define ENABLE_LONG_HOMING_CYCLE
+#define ENABLE_LONG_HOMING_CYCLE
 
 /**
  *
