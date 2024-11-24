@@ -24,6 +24,10 @@ extern "C"
 {
 #endif
 
+#ifndef MCU
+#define MCU MCU_AVR
+#endif
+
 #ifndef BOARD_NAME
 #define BOARD_NAME "CREALITY 114"
 #endif
